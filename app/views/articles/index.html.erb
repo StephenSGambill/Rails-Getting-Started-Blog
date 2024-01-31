@@ -1,0 +1,18 @@
+<div class="m-5">
+    <h1 class="text-3xl font-bold">All Articles</h1>
+    Our blog has <%= Article.public_count %> articles and counting!
+
+        <% @articles.each do | article | %>
+            <% unless article.archived? %>
+                <div class="ml-2 w-96 border-2 rounded-md bg-white p-2 border-gray-700 mt-2">
+                        <p> Title: 
+                            <%= link_to article.title, article, class: "text-blue-400" %>
+                        </p>
+                        <p>Author: <%= article.author %></p>
+                        <p>Body: <%= article.body %></p>
+                        <p>Post ID: <%= article.id %></p>
+                </div>
+            <% end %>
+        <% end %>
+</div>
+    <div class="m-7 p-2 border-2 border-gray-700 rounded-md bg-green-500 text-white inline"><%= link_to "New Article", new_article_path %></div>

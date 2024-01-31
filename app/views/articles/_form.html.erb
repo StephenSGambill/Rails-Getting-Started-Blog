@@ -1,0 +1,36 @@
+<div class="m-4">
+
+    <%= form_with model: article do |form| %>
+    <div class="border rounded-md">
+        <%= form.label :title %><br>
+        <%= form.text_field :title, class: "rounded-md" %>
+        <% article.errors.full_messages_for(:title).each do |message| %>
+        <div class="text-red-700"><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :author %><br>
+        <%= form.text_field :author, class: "rounded-md"  %>
+        <% article.errors.full_messages_for(:author).each do |message| %>
+        <div class="text-red-700"><%= message %></div>
+        <% end %>
+    </div>
+
+    <div>
+        <%= form.label :body %><br>
+        <%= form.text_area :body, class: "rounded-md"  %>
+        <% article.errors.full_messages_for(:body).each do |message| %>
+        <div class="text-red-700"><%= message %></div>
+        <% end %>
+    </div>
+    <div class="mb-4">
+        <%= form.label :status %><br>
+        <%= form.select :status, Visible::VALID_STATUSES, selected: article.status || 'public'%>
+    </div>
+
+    <div class="p-2 border-2 border-gray-500 rounded-md bg-green-500 text-white inline">
+        <%= form.submit %>
+    </div>
+    <% end %>
+</div>

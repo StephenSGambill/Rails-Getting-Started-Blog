@@ -1,0 +1,42 @@
+
+<%= turbo_include_tags %>
+
+<div class="m-4">
+    <h1 class="text-3xl font-bold">Article</h1>
+
+    <div class="border-2 rounded-md border-gray-700 w-1/2 bg-white p-2">
+                <p>Title: <%= @article.title %></p>
+                <p>Author: <%= @article.author %></p>
+                <p>Body: <%= @article.body %></p>
+    </div>
+
+    <div class="flex space-x-1 mt-1">
+            <div class="p-2 border-2 border-gray-700 rounded-md bg-green-500 text-white inline">
+                <%= link_to "Edit", edit_article_path(@article) %>
+            </div>
+            <div class="p-2 border-2 border-gray-700 rounded-md bg-red-500 text-white inline">
+                <%= link_to "Destroy", article_path(@article), data: { turbo_method: :delete,turbo_confirm: "Are you sure?"} %>
+            </div>
+        <div class="p-2 border-2 border-gray-700 rounded-md bg-blue-500 text-white inline">
+            <%= link_to "Return to Articles Page", articles_path %>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="m-4"> 
+    <h2 class="font-bold text-lg">Comments</h2>
+    <% if @article.comments.empty? %>
+        <p>There are currently no comments</p>
+    <% else %>
+        <%= render @article.comments %>
+    <%end%>
+</div>
+
+
+<div class="m-4"> 
+    <h2 class="font-bold text-lg w-1/2">Add a Comment</h2>
+    <div class="mb-3 ">
+        <%= render 'comments/form'%>
+</div>

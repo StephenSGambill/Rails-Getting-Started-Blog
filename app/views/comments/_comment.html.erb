@@ -1,0 +1,14 @@
+
+
+<% unless comment.archived?%>
+    <div class="mb-3 p-2 bg-white border-2 rounded-md border-gray-700 w-1/2"> 
+        <p><strong>Commenter: </strong><%= comment.commenter%></p>
+        <p><strong>Comment: </strong><%= comment.body%></p>
+    </div>
+    <div class="p-2 border-2 border-gray-700 rounded-md bg-red-500 text-white inline">
+        <%= link_to "Destroy Comment", [comment.article, comment], data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+                } %>
+    </div>
+<% end %>
