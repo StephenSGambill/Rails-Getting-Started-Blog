@@ -1,23 +1,21 @@
-<div class="border-2 border-gray-700 p-2 rounded-md w-1/2">
+<div class="border-2 border-gray-700 p-4 rounded-md w-1/2 ">
 
-<%= form_with model: [ @article, @article.comments.build ] do | form | %>
-        <p>
-            <%= form.label :commenter %> <br>
-            <%= form.text_field :commenter, class: "rounded-md" %>
-        </p>
-        <p>
-            <%= form.label :body %> <br>
-            <%= form.text_field :body, class: "rounded-md w-full"  %>
-        </p>
-        </div>
-        <div class="mb-4">
-            <%= form.label :status %><br>
-            <%= form.select :status, Visible::VALID_STATUSES, selected: 'public' %>
-        </div>
+    <%= form_with model: [ @article, @article.comments.build ] do | form | %>
+            <div>
+                <%= form.label :commenter %> <br>
+                <%= form.text_field :commenter, class: "rounded-md" %>
+            </div>
+            <div>
+                <%= form.label :body %> <br>
+                <%= form.text_field :body, class: "rounded-md w-full"  %>
+            </div>
+            <div class="mb-4">
+                <%= form.label :status %><br>
+                <%= form.select :status, Visible::VALID_STATUSES, selected: 'public' %>
+            </div>
 
-
-        <div class="p-2 border-2 border-gray-500 rounded-md bg-green-500 text-white inline">
-            <%= form.submit %>
-        </div>
-        <% end %>
+            <div class="p-2 border-2 border-gray-500 rounded-md bg-green-500 text-white inline">
+                <%= form.submit %>
+            </div>
+            <% end %>
 </div>
